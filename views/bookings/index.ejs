@@ -1,0 +1,40 @@
+<% layout("/layouts/boilerplate") -%>
+
+<h2 class="mt-3">My Bookings</h2>
+
+<% if (bookings.length === 0) { %>
+  <p>You have no bookings yet.</p>
+<% } else { %>
+  <ul>
+    <% bookings.forEach(booking => { %>
+      <li class="booking-item" style="margin-bottom:1.5rem; padding:1rem; border:1px solid #ccc; border-radius:8px; background-color:#f9f9f9;">
+        <div class="booking-header" style="display:flex; justify-content:space-between; margin-bottom:0.5rem;">
+          <span class="booking-title" style="font-weight:bold; font-size:1.1rem;">
+            <%= booking.listing?.title || "Listing deleted" %>
+          </span>
+          <span class="booking-owner" style="font-style:italic; font-size:0.9rem;">
+            by <%= booking.user?.username || "Unknown" %>
+          </span>
+        </div>
+        <div class="booking-dates" style="margin-bottom:0.5rem;">
+          Check-in: <%= booking.checkIn.toDateString() %> | 
+          Check-out: <%= booking.checkOut.toDateString() %> |
+          Total: ₹<%= booking.totalPrice.toLocaleString("en-IN") %>
+        </div>
+
+        <% if(booking.listing?.reviews?.length > 0) { %>
+          <ul style="margin-left:1rem; margin-top:0.5rem;">
+            <% booking.listing.reviews.forEach(review => { %>
+              <li style="margin-bottom:0.25rem;">
+                <strong>@<%= review.author?.username || "Unknown" %>:</strong>
+                <%= review.comment %> - ⭐ <%= review.rating %>
+              </li>
+            <% }) %>
+          </ul>
+        <% } else { %>
+          <p style="font-size:0.9rem; color:#555;">No reviews yet.</p>
+        <% } %>
+      </li>
+    <% }) %>
+  </ul>
+<% } %>

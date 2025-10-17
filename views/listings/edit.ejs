@@ -38,6 +38,19 @@
       <div class="invalid-feedback">Please provide a description.</div>
     </div>
 
+    
+      <!-- Category -->
+      <div class="mb-3">
+        <label for="category" class="form-label">Category</label>
+        <select name="listing[category]" id="category" class="form-select">
+          <% categories.forEach(cat => { %>
+            <option value="<%= cat %>" <%= listing.category === cat ? "selected" : "" %>>
+              <%= cat %>
+            </option>
+          <% }) %>
+        </select>
+      </div>
+
 <div class = "mb-3">
   Original Listing image<br/>
   <img src = "<%= originalImageUrl %>"

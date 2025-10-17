@@ -1,10 +1,10 @@
 <style>
 
   .btns {
-  display: flex;
-  gap: 1rem; /* ✅ Add spacing between buttons */
-  flex-wrap: wrap;
-}
+    display: flex;
+    gap: 1rem; /* ✅ Add spacing between buttons */
+    flex-wrap: wrap;
+  }
   .search-btn{
     background-color:#fe424d ;
     color:#fff;
@@ -28,84 +28,89 @@
   }
 
   .navbar-collapse {
-  align-items: center;
-  justify-content: space-between;
-}
-
-@media (max-width: 768px) {
-  .navbar-collapse > p {
-    margin: 0.5rem 0;
-    text-align: center;
+    align-items: center;
+    justify-content: space-between;
   }
-}
 
-.nav-auth {
-  margin-right: 0.2rem; /* 🔁 You can adjust from -0.2rem to -1rem */
-}
+  @media (max-width: 768px) {
+    .navbar-collapse > p {
+      margin: 0.5rem 0;
+      text-align: center;
+    }
+  }
 
+  .nav-auth {
+    margin-right: 0.2rem; /* 🔁 You can adjust from -0.2rem to -1rem */
+  }
 
 </style>
-
 
 <nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="/listings">
-      <i class="fa fa-compass" 
-      aria-hidden="true"></i></a>
+      <i class="fa fa-compass" aria-hidden="true"></i>
+    </a>
     <button 
       class="navbar-toggler" 
       type="button" 
       data-bs-toggle="collapse" 
       data-bs-target="#navbarNavAltMarkup">
       <span class="navbar-toggler-icon"></span>
-    
     </button>
+
     <div class="collapse navbar-collapse align-items-center">
-  <div class="navbar-text ms-2 fw-bold fs-5 text-danger">
-    Wanderlust
-  </div>
-</div>
+      <div class="navbar-text ms-2 fw-bold fs-5 text-danger">
+        VistaStay
+      </div>
+    </div>
 
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        
         <a class="nav-link" href="/listings">
            <b>Explore</b>
-           </a>
-        
+        </a>
       </div>
     </div>
-<diV class = navbar-nav ms-auto>
-  <form class="d-flex" role="search">
-      <input class="form-control me-2 search-inp" 
-      type="search" 
-      placeholder="Search Destination"/>
-      <button class="btn search-btn" type="submit">
-        <i class = "fa-solid fa-magnifying-glass"></i>
-        </button>
-    </form>
-</diV>
 
-<!--for login sign up and all-->
+    <div class="navbar-nav ms-auto">
+      <form class="d-flex" role="search">
+        <input class="form-control me-2 search-inp" 
+               type="search" 
+               placeholder="Search Destination"/>
+        <button class="btn search-btn" type="submit">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </form>
+    </div>
+
+    <!-- for login, sign up, my bookings, logout -->
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav ms-auto">
         <a class="nav-link nav-auth" href="/listings/new">
-          <i class="fa-solid fa-house-user"></i>Wanderlust your home</a>
-        <% if(!currUser){%>
-        <a class="nav-link nav-auth" href="/signup">
-          <i class=" fa-user-plus"><i class="fa-solid fa-user-plus"></i>Sign Up</a>
-        <a class="nav-link nav-auth" href="/login">
-          <i class="fa-solid fa-right-to-bracket"></i>Log in</a>
-        <%}
-        %>
+          <i class="fa-solid fa-house-user"></i>Wanderlust your home
+        </a>
 
-        <% if(currUser){%>
-        <a class="nav-link nav-auth" href="/logout">
-          <i class="fa-solid fa-right-from-bracket"></i>Log out</a>
-        <%}
-        %>
+        <% if(!currUser){ %>
+          <a class="nav-link nav-auth" href="/signup">
+            <i class="fa-solid fa-user-plus"></i>Sign Up
+          </a>
+          <a class="nav-link nav-auth" href="/login">
+            <i class="fa-solid fa-right-to-bracket"></i>Log in
+          </a>
+        <% } %>
+
+        <% if(currUser){ %>
+          <!-- ✅ My Bookings link for logged-in users -->
+          <a class="nav-link nav-auth" href="/bookings/my">
+            <i class="fa-solid fa-calendar-check"></i>My Bookings
+          </a>
+
+          <a class="nav-link nav-auth" href="/logout">
+            <i class="fa-solid fa-right-from-bracket"></i>Log out
+          </a>
+        <% } %>
       </div>
     </div>
-  </div> <!-- ✅ Missing closing tag added here -->
 
+  </div> <!-- container-fluid -->
 </nav>

@@ -31,6 +31,18 @@
           </textarea>
         </div>
 
+        <!-- Category -->
+      <div class="mb-3">
+        <label for="category" class="form-label">Category</label>
+        <select name="listing[category]" id="category" class="form-select">
+          <% categories.forEach(cat => { %>
+            <option value="<%= cat %>" <%= listing.category === cat ? "selected" : "" %>>
+              <%= cat %>
+            </option>
+          <% }) %>
+        </select>
+      </div>
+
         <div class="mb-3">
           <label for="image" class="form-label"> Upload Listing Image</label>
           <input name="image" type="file" class="form-control" required />

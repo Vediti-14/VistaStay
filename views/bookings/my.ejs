@@ -1,0 +1,29 @@
+<%- layout('layouts/boilerplate') -%>
+
+<div class="container mt-5">
+    <h3>My Bookings</h3>
+
+    <% if(bookings.length === 0){ %>
+        <p class="text-muted">You have no bookings yet.</p>
+    <% } %>
+
+    <div class="row">
+    <% bookings.forEach(b => { %>
+        <div class="col-md-6">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <a href="/listings/<%= b.listing._id %>"><%= b.listing.title %></a>
+                    </h5>
+                    <p class="card-text"><b>Location:</b> <%= b.listing.location %>, <%= b.listing.country %></p>
+                    <p class="card-text">
+                        <b>Check-in:</b> <%= b.checkIn.toDateString() %> |
+                        <b>Check-out:</b> <%= b.checkOut.toDateString() %>
+                    </p>
+                    <p class="card-text"><b>Total:</b> ₹<%= b.totalPrice %></p>
+                </div>
+            </div>
+        </div>
+    <% }) %>
+    </div>
+</div>
