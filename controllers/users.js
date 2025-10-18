@@ -50,3 +50,7 @@ module.exports.renderLoginForm = (req,res)=>{
         res.redirect("/listings");
     })
 }
+
+module.exports.renderHome = (req, res) => {
+    res.render("index", { title: "VistaStay" }); // pass any data you want
+};

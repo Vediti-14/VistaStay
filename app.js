@@ -121,6 +121,8 @@ app.get("/demouser",async(req,res)=>
 app.use("/listings",listingRouter);
 app.use("/listings/:id/reviews",reviewRouter);
 app.use("/",userRouter);
+// Root route
+router.get("/", userController.renderHome);
 
 
 
