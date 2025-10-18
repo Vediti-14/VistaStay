@@ -2,10 +2,10 @@
  const User = require("../models/user");
 
 
-
- module.exports.renderHome = (req, res) => {
-    res.render("index", { title: "VistaStay" });
+module.exports.renderHome = (req, res) => {
+    res.render("listings/index");
 };
+
 
 module.exports.renderSignupForm = (req, res) => {
     res.render("users/signup.ejs");
