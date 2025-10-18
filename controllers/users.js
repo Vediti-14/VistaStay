@@ -1,6 +1,12 @@
  
  const User = require("../models/user");
 
+
+
+ module.exports.renderHome = (req, res) => {
+    res.render("index", { title: "VistaStay" });
+};
+
 module.exports.renderSignupForm = (req, res) => {
     res.render("users/signup.ejs");
 };
@@ -51,6 +57,6 @@ module.exports.renderLoginForm = (req,res)=>{
     })
 }
 
-module.exports.renderHome = (req, res) => {
-    res.render("index", { title: "VistaStay" }); // pass any data you want
-};
+
+
+
