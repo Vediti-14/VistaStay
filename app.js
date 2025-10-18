@@ -66,6 +66,8 @@ store.on("error",() =>{
     console.log("ERROR in MONGO SESSION STORE",err);
 });
 
+
+
 const sessionOptions = {
     store,
     secret: process.env.SECRET,
@@ -158,7 +160,7 @@ app.use((err,req,res,next)=>{
     res.status(statusCode).render("error.ejs" ,{err});
 
 });
-
-app.listen(8080, () => {
-    console.log("server is listening to port 8080");
+const port = process.env.PORT || 8080; // Use Render's port or fallback to 8080 locally
+app.listen(port, () => {
+    console.log(`server is listening to port ${port}`);
 });
