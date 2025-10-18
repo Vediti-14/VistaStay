@@ -2,10 +2,15 @@
  const User = require("../models/user");
 
 
-module.exports.renderHome = (req, res) => {
-    res.render("listings/index");
+module.exports.renderHome = async (req, res) => {
+    try {
+        const allListings = await Listing.find({}); // fetch all listings from DB
+        res.render("listings/index", { allListings }); // pass allListings to the template
+    } catch (err) {
+        req.flash("error", "Cannot load listings!");
+        res.redirect("/listings"); // fallback
+    }
 };
-
 
 module.exports.renderSignupForm = (req, res) => {
     res.render("users/signup.ejs");
